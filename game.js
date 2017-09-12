@@ -1,29 +1,20 @@
-let canvas = document.getElementById('canvas');
-let context = canvas.getContext("2d");
 
-let screenSize = new Pair(0,0);
-window.addEventListener ("resize", function ()
-{
-	screenSize.x = window.innerWidth;
-	screenSize.y = window.innerHeight;
-	canvas.width = screenSizeX;
-	canvas.height = screenSizeY;
-}, true);
+let player, bear, platform = [], plaformNumber;
+
+function abs(a) {
+	if (a < 0) {
+		return a*(-1);
+	}
+	return a;
+}
 
 function main() {
+	player.move.makeMove();
 	setTimeout(main, 30);
 }
 
-function draw() {
-	context.clearRect(0, 0, canvas.width, canvas.height);
+resize();
+start();
+main();
+draw();
 
-	context.fillStyle = "blue";
-	context.fillRect(player.pos.x, player.pos.y, player.size.x, player.size.y);
-
-	context.globalAlpha = 0.5;
-	context.fillRect(10, 10, ratio * 200, 20);
-	context.globalAlpha = 1;
-	context.strokeRect(10, 10, 200, 20);
-
-	window.requestAnimationFrame(draw);
-}
